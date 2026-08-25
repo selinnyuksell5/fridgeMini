@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Depo Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 🐦 Flutter SDK Kurulumu
         uses: subosito/flutter-action@v2
@@ -55,7 +55,7 @@ jobs:
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
     steps:
       - name: 📚 Depo Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 🐦 Flutter SDK Kurulumu
         uses: subosito/flutter-action@v2
@@ -93,7 +93,7 @@ jobs:
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
     steps:
       - name: 📚 Depo Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 🐦 Flutter SDK Kurulumu
         uses: subosito/flutter-action@v2
