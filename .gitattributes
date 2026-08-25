@@ -1,0 +1,43 @@
+* text=auto eol=lf
+
+# Dil dosyaları
+*.dart linguist-language=Dart
+*.kt linguist-language=Kotlin
+*.swift linguist-language=Swift
+*.gradle linguist-language=Kotlin
+*.kts linguist-language=Kotlin
+
+# Satır sonu ayarları
+*.dart text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.xml text eol=lf
+
+# İkili dosyalar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.otf binary
+*.jar binary
+*.apk binary
+*.bin binary
+*.aab binary
+
+# Dokümanlar
+LICENSE linguist-detectable=false
+*.md linguist-detectable=true
+
+# Flutter generated dosyalar (dil istatistiklerinde görünmesin)
+**/Generated.xcconfig linguist-generated
+**/GeneratedPluginRegistrant.h linguist-generated
+**/GeneratedPluginRegistrant.m linguist-generated
+**/GeneratedPluginRegistrant.swift linguist-generated
+**/generated_plugin_registrant.cc linguist-generated
+**/generated_plugin_registrant.h linguist-generated
+**/generated_plugins.cmake linguist-generated
+firebase_options.dart linguist-generated

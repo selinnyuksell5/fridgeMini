@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📧 E-posta ile İletişim
+    url: mailto:selinnyuksell5@gmail.com
+    about: Özel konular için doğrudan iletişime geçin.
+  - name: 📖 Proje Dokümantasyonu
+    url: https://github.com/selinnyuksell5/fridgeMini/blob/master/README.md
+    about: Önce README dosyasını inceleyin - birçok cevap orada!

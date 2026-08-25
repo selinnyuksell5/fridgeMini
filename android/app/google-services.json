@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "48501856424",
+    "project_id": "fridgeminii",
+    "storage_bucket": "fridgeminii.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48501856424:android:bbad5b22dac834095e0a9d",
+        "android_client_info": {
+          "package_name": "com.example.fridgemini"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg9MA9zkzvJK819Dhd2DnuTiExSv1X3jI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
