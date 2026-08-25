@@ -30,7 +30,7 @@ dependencies:
   form_validator: ^2.1.1
   
   # File & Network
-  image_picker: ^1.0.8
+  image_picker: ^1.2.3
   http: ^1.2.1
   path_provider: ^2.1.2
   path: ^1.8.3
