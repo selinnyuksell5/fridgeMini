@@ -32,7 +32,7 @@ dependencies:
   # File & Network
   image_picker: ^1.0.8
   http: ^1.2.1
-  path_provider: ^2.1.2
+  path_provider: ^2.1.6
   path: ^1.8.3
   
   # AI & ML
