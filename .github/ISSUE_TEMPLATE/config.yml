@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📧 E-posta ile İletişim
+    url: mailto:selinnyuksell5@gmail.com
+    about: Güvenlik açıkları veya özel konular için doğrudan iletişime geçin.
+  - name: 📖 Proje Dokümantasyonu
+    url: https://github.com/selinnyuksell5/fridgeMini/blob/master/README.md
+    about: Önce README dosyasını inceleyin - birçok cevap orada!
+  - name: 🛡️ Güvenlik Açığı Bildir
+    url: https://github.com/selinnyuksell5/fridgeMini/blob/master/SECURITY.md
+    about: Güvenlik açıklarını buradaki talimatlara göre bildirin.

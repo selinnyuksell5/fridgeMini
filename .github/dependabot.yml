@@ -1,0 +1,67 @@
+version: 2
+updates:
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Istanbul"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "pub"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    groups:
+      flutter-minor:
+        patterns:
+          - "flutter"
+          - "cupertino_icons"
+        update-types:
+          - "minor"
+          - "patch"
+      ui-packages:
+        patterns:
+          - "flutter_*"
+          - "*_screenutil"
+          - "*_spinkit"
+          - "*_animate"
+          - "cached_network_image"
+          - "flutter_svg"
+      firebase-packages:
+        patterns:
+          - "firebase_*"
+          - "cloud_firestore"
+      ai-packages:
+        patterns:
+          - "google_generative_ai"
+          - "http"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      timezone: "Europe/Istanbul"
+    labels:
+      - "dependencies"
+      - "ci"
+    commit-message:
+      prefix: "chore(ci)"
+
+  - package-ecosystem: "gradle"
+    directory: "/android"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Istanbul"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "android"
+    commit-message:
+      prefix: "chore(android)"
+      include: "scope"

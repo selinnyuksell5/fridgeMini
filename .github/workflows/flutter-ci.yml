@@ -1,0 +1,116 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ "master", "main" ]
+    paths-ignore:
+      - "*.md"
+      - "LICENSE"
+      - ".gitattributes"
+      - "docs/**"
+  pull_request:
+    branches: [ "master", "main" ]
+
+env:
+  FLUTTER_VERSION: "3.24.0"
+
+jobs:
+  analyze-test:
+    name: 🔍 Analiz & 🧪 Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Depo Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Flutter SDK Kurulumu
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: "stable"
+          cache: true
+
+      - name: 📦 Bağımlılıkları Yükle
+        run: flutter pub get
+
+      - name: ✍️ Formatlama Kontrolü
+        run: dart format --set-exit-if-changed .
+        continue-on-error: true
+
+      - name: 🔍 Statik Analiz
+        run: flutter analyze --fatal-infos --fatal-warnings
+
+      - name: 🧪 Testleri Çalıştır
+        run: flutter test --coverage
+
+      - name: 📊 Coverage Yükle
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+        continue-on-error: true
+
+  build-android:
+    name: 🤖 Android Derleme
+    needs: analyze-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    steps:
+      - name: 📚 Depo Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Flutter SDK Kurulumu
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: "stable"
+          cache: true
+
+      - name: 📦 Bağımlılıkları Yükle
+        run: flutter pub get
+
+      - name: 🛠️ Gradle Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-
+
+      - name: 🔨 Debug APK Derle
+        run: flutter build apk --debug
+
+      - name: 📦 APK'yı Artifact Olarak Sakla
+        uses: actions/upload-artifact@v4
+        with:
+          name: fridgemini-android-debug
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 30
+
+  build-web:
+    name: 🌐 Web Derleme
+    needs: analyze-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    steps:
+      - name: 📚 Depo Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Flutter SDK Kurulumu
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: "stable"
+          cache: true
+
+      - name: 📦 Bağımlılıkları Yükle
+        run: flutter pub get
+
+      - name: 🔨 Web Derle
+        run: flutter build web --release
+
+      - name: 🚀 GitHub Pages'e Dağıt
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+        continue-on-error: true
