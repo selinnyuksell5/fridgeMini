@@ -22,9 +22,9 @@ dependencies:
   provider: ^6.1.2
   
   # Firebase - Güncellenmiş versiyonlar
-  firebase_core: ^3.6.0
-  firebase_auth: ^5.3.1
-  cloud_firestore: ^5.4.4
+  firebase_core: ^4.14.0
+  firebase_auth: ^6.6.1
+  cloud_firestore: ^6.9.0
   
   # Form & Validation
   form_validator: ^2.1.1
